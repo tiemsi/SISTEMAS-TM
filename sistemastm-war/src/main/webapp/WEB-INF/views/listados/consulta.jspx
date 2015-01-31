@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:jsp="http://java.sun.com/JSP/Page"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:spring="http://www.springframework.org/tags" version="2.0" class="span-24 last" style="margin-left: 25px;">
+	<jsp:directive.page contentType="text/html;charset=UTF-8" />
+	<jsp:output omit-xml-declaration="yes" />
+	
+	<spring:message code="label_listado_ficheros" var="labelListadoFicheros" />
+	<spring:message code="url_multilaterales_listados_descargas" var="urlDescargas" />
+	
+	<spring:url value="listados/" var="showListadoFicherosUrl" />
+	 
+	<script type="text/javascript">
+		$(document).ready(function(){
+			$("#directorios").treetable({ expandable: true });
+		
+			$("#directorios tbody").on("mousedown", "tr", function() {
+			  $(".selected").not(this).removeClass("selected");
+			  $(this).toggleClass("selected");
+			});
+		
+			$("#directorios .file, #directorios .folder").draggable({
+			  helper: "clone",
+			  opacity: .75,
+			  refreshPositions: true,
+			  revert: "invalid",
+			  revertDuration: 300,
+			  scroll: true
+			});
+		
+
+		});                      	
+	</script>
+	<c:set var="carpetaLabel" value="Carpeta"></c:set>
+	<c:set var="ficheroLabel" value="Fichero"></c:set>
+	<c:set var="kilobytes" value=" kB"></c:set>
+	<c:set var="directorio" value="Directorio"></c:set>
+
+	<h2 class=" span-23">
+		<spring:message code="label_listado_ficheros"/>
+	</h2>
+	<hr class="space"/>
+	<div class="span-23 clear">
+	<table id="directorios">
+        <caption><spring:message code="label_listado_caption"/></caption>
+        <thead>
+          <tr>
+            <th><spring:message code="label_listado_nombre"/></th>
+            <th><spring:message code="label_listado_fechaCreacion"/></th>
+			<th><spring:message code="label_listado_tamanyo"/></th>
+          </tr>
+        </thead>
+        <tbody>
+	        <c:forEach var="fichero" items="${ficheros}">
+	        <c:set var="url" value="${urlDescargas}?url=${fichero.pathFichero}"/>
+	       		 <c:choose>
+					<c:when test="${fichero.pathPadre ne ''}">
+   						<tr	data-tt-id="${fichero.pathFichero}" data-tt-parent-id="${fichero.pathPadre}"> 
+							<td>	
+					 			<c:choose>
+									<c:when test="${fichero.isFolder==true}">
+										<span class="folder">${fichero.fileName}</span>
+									</c:when>
+									<c:otherwise>
+					 					<span class="file">
+						 					<a href='${url}'>
+						 						<c:out value='${fichero.fileName}'/>
+						 					</a>
+					 					</span>
+					 				</c:otherwise>
+								</c:choose>
+							</td>
+							<td>	
+				 				<c:out value='${fichero.fechaCreacion}'/>
+							</td>	
+							<td>	
+				 				<c:choose>
+									<c:when test="${fichero.isFolder==true}">
+										 <c:out value='${directorio}'}/>
+									</c:when>
+									<c:otherwise>
+				 						<c:out value='${fichero.size}'/> <c:out value='${kilobytes}'/>
+				 					</c:otherwise>
+								</c:choose>
+							</td>													
+   						</tr>
+ 					 </c:when>
+ 					<c:otherwise>
+ 						<tr data-tt-id="${fichero.pathFichero}">
+							<td>	
+					 			<c:choose>
+									<c:when test="${fichero.isFolder==true}">
+										<span class="folder">${fichero.fileName}</span>
+									</c:when>
+									<c:otherwise>
+					 					<span class="file">
+						 					<a href="${urlDescargas}?url=${fichero.pathFichero}">
+						 						${fichero.fileName}
+						 					</a>
+					 					</span>
+					 				</c:otherwise>
+								</c:choose>
+							</td>
+							<td>	
+				 				<c:out value='${fichero.fechaCreacion}'/>
+							</td>	
+							<td>	
+				 				<c:choose>
+									<c:when test="${fichero.isFolder==true}">
+										 <c:out value='${directorio}'}/>
+									</c:when>
+									<c:otherwise>
+				 						<c:out value='${fichero.size}'/> <c:out value="${kilobytes}"/>
+				 					</c:otherwise>
+								</c:choose>
+							</td>						 						
+ 						</tr>
+ 					</c:otherwise>
+ 				</c:choose>
+			</c:forEach>
+	   </tbody>
+	  </table>
+	</div>
+	<div id="pager"></div>
+</div>

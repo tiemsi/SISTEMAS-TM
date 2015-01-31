@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+
+<div xmlns:jsp="http://java.sun.com/JSP/Page"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:spring="http://www.springframework.org/tags" version="2.0" style="height:610px; font-size: 15px;">
+	
+	<p class="error">
+		Se ha producido un error en la aplicación. Por favor, contacte con el administrador.<br></br>
+		<c:out value="${message.message}"></c:out>
+	</p>
+</div>	

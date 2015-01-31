@@ -1,0 +1,123 @@
+<html xmlns:jsp="http://java.sun.com/JSP/Page" 
+      xmlns:c="http://java.sun.com/jsp/jstl/core" 
+      xmlns:fn="http://java.sun.com/jsp/jstl/functions" 
+      xmlns:tiles="http://tiles.apache.org/tags-tiles" 
+      xmlns:spring="http://www.springframework.org/tags">  
+
+    <jsp:output doctype-root-element="HTML" doctype-system="about:legacy-compat" />
+    
+    <jsp:directive.page contentType="text/html;charset=UTF-8" />  
+    <jsp:directive.page pageEncoding="UTF-8" /> 
+		
+	<head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=8" />
+        <meta content="/img/logo_ico.png" itemprop="image"/>
+		
+        <spring:url value="/styles/standard.css" var="app_css_url" />
+         <spring:url value="/img/logo_ico.png" var="app_favicon_url" />
+         
+        <link rel="stylesheet" type="text/css" media="screen" href="${app_css_url}" />
+        <link rel="icon" type="image/png" href="${app_favicon_url}" />
+        
+                
+        <!-- jQuery and jQuery UI -->
+        <spring:url value="/scripts/jquery-1.7.1.js" var="jquery_url" />
+        <spring:url value="/scripts/custom.js" var="custom_url" />
+
+        <spring:url value="/scripts/jquery.number.min.js" var="jquery_number_url" />  
+        <spring:url value="/scripts/jquery-ui-1.8.16.custom.min.js" var="jquery_ui_url" />        
+        <spring:url value="/scripts/jquery.cookie.js" var="jquery_cookie" />  
+        <spring:url value="/scripts/sooperfish-menu/jquery.easing-sooper.js" var="easing_url" />
+        <spring:url value="/scripts/sooperfish-menu/jquery.sooperfish.min.js" var="sooperfish_url" />      
+        <spring:url value="/styles/custom-theme/jquery-ui-1.8.16.custom.css" var="jquery_ui_theme_css" />
+        <spring:url value="/scripts/sooperfish-menu/sooperfish.css" var="sooperfish_css" />
+        <spring:url value="/scripts/sooperfish-menu/sooperfish-theme-glass.css" var="sooperfish_theme_css" />        
+        
+        <link rel="stylesheet" type="text/css" media="screen" href="${jquery_ui_theme_css}" />
+        <link rel="stylesheet" type="text/css" media="screen" href="${sooperfish_theme_css}" />
+        <link rel="stylesheet" type="text/css" media="screen" href="${sooperfish_css}" />
+
+         
+        <script src="${jquery_url}" type="text/javascript"><jsp:text/></script>
+        <script src="${simplemodal_url}" type="text/javascript"><jsp:text/></script>
+        <script src="${custom_url}" type="text/javascript"><jsp:text/></script>
+        <script src="${jquery_ui_url}" type="text/javascript"><jsp:text/></script>
+        <script src="${jquery_cookie}" type="text/javascript"><jsp:text/></script>
+        <script src="${jquery_number_url}" type="text/javascript"><jsp:text/></script>
+        <script src="${easing_url}" type="text/javascript"><jsp:text/></script>
+        <script src="${sooperfish_url}" type="text/javascript"><jsp:text/></script>
+
+		<!-- Confirmon -->
+		<spring:url value="/scripts/confirmon/jquery.confirmon.js" var="simplemodal_url" />
+        <spring:url value="/scripts/confirmon/jquery.confirmon.css" var="simplemodal_theme_css" />
+		<link rel="stylesheet" type="text/css" media="screen" href="${simplemodal_theme_css}" />
+	    <script type="text/javascript" src="${simplemodal_url}"><jsp:text/></script>
+	    
+	    <!-- jqtreetable -->
+	    <spring:url value="/scripts/jqtree/jquery.treetable.js" var="jqtreetable" />
+        <spring:url value="/scripts/jqtree/jquery.treetable.css" var="jqtreetable_css" />
+        <spring:url value="/scripts/jqtree/jquery.treetable.theme.default.css" var="jqtreetable_css_default" /> 
+		<link rel="stylesheet" type="text/css" media="screen" href="${jqtreetable_css}" />
+		<link rel="stylesheet" type="text/css" media="screen" href="${jqtreetable_css_default}" />
+	    <script type="text/javascript" src="${jqtreetable}"><jsp:text/></script>
+	    
+        <!-- CKEditor -->
+        <spring:url value="/scripts/ckeditor/ckeditor.js" var="ckeditor_url" />
+        <spring:url value="/scripts/ckeditor/adapters/jquery.js" var="ckeditor_jquery_url" />
+        <script type="text/javascript" src="${ckeditor_url}"><jsp:text/></script>
+        <script type="text/javascript" src="${ckeditor_jquery_url}"><jsp:text/></script>		
+
+        <!-- jqGrid -->
+        <spring:url value="/scripts/jqgrid/css/ui.jqgrid.css" var="jqgrid_css" />
+        <spring:url value="/scripts/jqgrid/js/i18n/grid.locale-es.js" var="jqgrid_locale_url" />
+        <spring:url value="/scripts/jqgrid/js/jquery.jqGrid.min.js" var="jqgrid_url" />
+        <link rel="stylesheet" type="text/css" media="screen" href="${jqgrid_css}" />
+        <script type="text/javascript" src="${jqgrid_locale_url}"><jsp:text/></script> 
+        <script type="text/javascript" src="${jqgrid_url}"><jsp:text/></script>
+
+        <!-- dynaTree -->
+        <spring:url value="/scripts/dynatree/src/skin/ui.dynatree.css" var="ui_dynatree_css" />        
+        <spring:url value="/scripts/dynatree/src/jquery.dynatree.js" var="jquery_dynatree" />
+        <link rel="stylesheet" type="text/css" media="screen" href="${ui_dynatree_css}" />        
+        <script src="${jquery_dynatree}" type="text/javascript"><jsp:text/></script>
+        
+		
+	    <!-- Get the user locale from the page context (it was set by Spring MVC's locale resolver) -->
+	    <c:set var="userLocale">
+	        <c:set var="plocale">${pageContext.response.locale}</c:set>
+	        <c:out value="${fn:replace(plocale, '_', '-')}" default="en" />
+	    </c:set>
+	
+		<spring:message code="application_name" var="app_name" htmlEscape="false"/>
+		<title><spring:message code="welcome_h3" arguments="${app_name}" /></title>
+	
+	</head>
+	
+  	<body>
+
+  	    <div class="headerWrapper" >
+  	        <tiles:insertAttribute name="header" ignore="true" /> 
+  	    </div>
+  	     <div class="menuWrapper">
+  	    	 <tiles:insertAttribute name="menu" ignore="true" />
+  	    </div>
+	<div class="mainWrapper">
+		<div class="container">
+			<c:if test="${not empty message}">
+				<div class="span-24 last" style="margin-left: 25px;">
+					<div class="clear span-23">
+						<div id="message" class="${message.type}">
+							${message.message}
+						</div>
+					</div>
+				</div>
+			</c:if>
+
+			<tiles:insertAttribute name="body" />
+			<div class="push"></div>
+		</div>
+		<tiles:insertAttribute name="footer" ignore="true" />
+	</div>
+</body>
+</html>

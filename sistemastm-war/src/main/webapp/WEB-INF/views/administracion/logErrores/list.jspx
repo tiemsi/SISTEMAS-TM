@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:jsp="http://java.sun.com/JSP/Page"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:spring="http://www.springframework.org/tags" version="2.0" class="span-24 last" style="margin-left: 25px;">
+	<jsp:directive.page contentType="text/html;charset=UTF-8" />
+	<jsp:output omit-xml-declaration="yes" />
+
+	<spring:message code="label_log_errores_list" var="labelLogErroresList" />
+	<spring:message code="label_log_errores_id" var="labelLogErroresId" />
+	<spring:message code="label_log_errores_descripcion" var="labelLogErroresDescripcion" />
+	<spring:message code="label_log_errores_origen" var="labelLogErroresOrigen" />
+	<spring:message code="label_log_errores_parametros" var="labelLogErroresParametros" />
+	<spring:message code="label_log_errores_usuario" var="labelLogErroresUsuario" />
+	<spring:message code="label_log_errores_fecha" var="labelLogErroresFecha" />
+	<spring:url value="/excel" var="showLogErroresUrl" />
+
+	<script type="text/javascript">
+		$(function() {
+			$("#list").jqGrid(
+					{
+						datatype : 'local',
+						mtype : 'GET',
+						colNames : [ '${labelLogErroresId}',
+								'${labelLogErroresDescripcion}',
+								'${labelLogErroresOrigen}',
+								'${labelLogErroresParametros}',
+								'${labelLogErroresUsuario}',
+								'${labelLogErroresFecha}' ],
+						colModel : [ {
+									name : 'id',
+									index : 'id',
+									sortable : false,
+									width : 50
+								}, {
+									name : 'descripcion',
+									index : 'descripcion',
+									sortable : true,
+									width : 115
+								}, {
+									name : 'origen',
+									index : 'origen',
+									sortable : true,
+									width : 115
+								}, {
+									name : 'parametros',
+									index : 'parametros',
+									sortable : false,
+									width : 100
+								}, {
+									name : 'usuario',
+									index : 'usuario',
+									sortable : false,
+									width : 70
+								}, {
+									name : 'fecha',
+									index : 'fecha',
+									sortable : false,
+									width : 70,
+									formatter : dateFormat
+								} ],
+						jsonReader : {
+							root : "logErroresData",
+							page : "currentPage",
+							total : "totalPages",
+							records : "totalRecords",
+							repeatitems : false,
+							id : "id"
+						},
+				        pager: '#pager',
+				        rowNum:20,
+				        rowList:[5,10,15,20,25,30],
+						viewrecords : true,
+						gridview : true,
+						height : 500,
+						width : 1140,
+						caption : '${labelLogErroresList}',
+						onSelectRow : function(id) {
+							document.location.href = "<spring:message code='url_administracion_logErrores'/>" + id;
+						},
+						loadError: handleLoadError
+					});
+			
+			$("#search").click(
+					function() {
+						$("#list").jqGrid().setGridParam(
+								{
+									url : '<spring:message code="url_administracion_logErrores_listgrid"/>?reset=true&amp;id='+ $("#id").val(),
+									page: 0,
+									datatype: 'json'
+								}).trigger("reloadGrid");
+					});
+			
+			$("#excelButton").click(function() {
+				alert("${showLogErroresUrl}");
+				document.location.href = "${showLogErroresUrl}";
+				return false;
+			});
+				
+		});
+		
+		$(document).ready(function(){
+			$("#id").val("${id}");
+			
+			$("#list").jqGrid().setGridParam( {
+				url : '<spring:message code="url_administracion_logErrores_listgrid"/>',
+				datatype: 'json'
+			}).trigger("reloadGrid");
+		
+			$("#list").jqGrid().setGridParam( {
+				url : '<spring:message code="url_administracion_logErrores_listgrid"/>?reset=true&amp;id=' + $("#id").val(),
+				datatype: 'json'
+			});
+			
+		});
+	</script>
+	
+	<hr class="space"/>
+	<h2 class=" span-23">${labelLogErroresList}</h2>
+	<hr class="space"/>
+	
+	<div id="criteria">
+		<a href="#" id="excelButton"> 
+			<spring:message code="label_excel" />
+			<img src="/prototipo1/img/excel.jpg" class="icon excel-icon" />
+		</a>
+	</div>
+	
+	<div id="criteria">
+		<input type="text" id="id" class="input-search" onkeyup="searchDelayed('id', 'search')" />
+		<button name="search" id="search" type="search" class="button-submit">
+			<span>Buscar</span>
+		</button>
+		
+	</div>
+	
+	<hr class="space"/>
+	<div class="span-23 clear">
+		<table id="list">
+			<tr>
+				<td />
+			</tr>
+		</table>
+	</div>
+	<div id="pager"></div>
+	
+</div>

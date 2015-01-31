@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:jsp="http://java.sun.com/JSP/Page" 
+     xmlns:c="http://java.sun.com/jsp/jstl/core"  
+     xmlns:spring="http://www.springframework.org/tags"
+     xmlns:form="http://www.springframework.org/tags/form"
+     xmlns:joda="http://www.joda.org/joda/time/tags"
+     version="2.0" class="main-content span-24 last">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+
+    <spring:message code="label_log_errores_info" var="labelLogErroresInfo"/>
+	<spring:message code="label_log_errores_id" var="labelLogErroresId" />
+	<spring:message code="label_log_errores_descripcion" var="labelLogErroresDescripcion" />
+	<spring:message code="label_log_errores_origen" var="labelLogErroresOrigen" />
+	<spring:message code="label_log_errores_traza" var="labelLogErroresTraza" />
+	<spring:message code="label_log_errores_parametros" var="labelLogErroresParametros" />
+	<spring:message code="label_log_errores_usuario" var="labelLogErroresUsuario" />
+	<spring:message code="label_log_errores_fecha" var="labelLogErroresFecha" />
+    
+    
+    <spring:url value="/administracion/logErrores" var="editLogErroresUrl"/>   
+    
+    <script type="text/javascript">
+		$(function() {
+			$(".formatNumber").each(function() {
+			    var value =$(this).html();
+			    var formattedValue = numFormat(value);
+			    $(this).html(formattedValue);
+			 });
+		});
+	</script>   
+
+	<hr class="space"/>
+	<hr class="space"/>
+	<h2 class=" span-23">${labelLogErroresInfo}</h2>
+
+    <div id="contactInfo">
+		<table class="form-table">
+            <tr>
+                <td>${labelLogErroresId}</td>
+                <td>${logErrores.id}</td>
+            </tr>   
+            <tr>
+                <td>${labelLogErroresDescripcion}</td>
+                <td>${logErrores.descripcion}</td>
+            </tr>   
+            <tr>
+                <td>${labelLogErroresOrigen}</td>
+                <td>${logErrores.origen}</td>
+            </tr>   
+             <tr>
+                <td>${labelLogErroresTraza}</td>
+                <td>${logErrores.traza}</td>
+            </tr>   
+            <tr>
+                <td>${labelLogErroresParametros}</td>
+                <td>${logErrores.parametros}</td>
+            </tr>   
+            <tr>
+                <td>${labelLogErroresUsuario}</td>
+                <td>${logErrores.usuario}</td>
+            </tr>
+            <tr>
+                <td>${labelLogErroresFecha}</td>
+                <td>${logErrores.fecha}</td>
+            </tr>   
+              
+        </table>         
+        <div class="align-right">
+			<button name="submit" id="submit" type="button" class="button-reset" onclick="openUrl('${editLogErroresUrl}')">
+				<span>
+					<spring:message code="label_volver" />
+				</span>
+			</button>				
+		</div>                     
+    </div>
+
+</div>

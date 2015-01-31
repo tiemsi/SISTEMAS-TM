@@ -1,0 +1,116 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>es.war.tm</groupId>
+	<artifactId>sistemastm-war</artifactId>
+	<version>1.0.0</version>
+	<packaging>war</packaging>
+
+	<name>sistemastm-war</name>
+	<url>http://maven.apache.org</url>
+
+	<parent>
+		<groupId>es.pom.tm</groupId>
+		<artifactId>sistemastm-pom</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+		<relativePath>../sistemastm-pom</relativePath>
+	</parent>
+
+
+	<dependencies>
+		<!-- sistemastm-jar -->
+		<dependency>
+			<groupId>es.jar.tm</groupId>
+			<artifactId>sistemastm-jar</artifactId>
+			<version>1.0.0</version>
+		</dependency>
+
+		<!-- Arquitectura -->
+		<dependency>
+			<groupId>es.arq</groupId>
+			<artifactId>arquitectura-jar</artifactId>
+			<version>1.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-webmvc</artifactId>
+			<version>3.2.3.RELEASE</version>
+		</dependency>
+		
+		<!-- Joda Time JSP tag Library -->
+		<dependency>
+			<groupId>joda-time</groupId>
+			<artifactId>joda-time-jsptags</artifactId>
+			<version>${joda-time.joda-time-jsptags-version}</version>
+		</dependency>
+
+		<!-- Apache Tiles -->
+		<dependency>
+			<groupId>org.apache.tiles</groupId>
+			<artifactId>tiles-core</artifactId>
+			<version>${org.apache.tiles-version}</version>
+			<exclusions>
+				<exclusion>
+					<groupId>commons-logging</groupId>
+					<artifactId>commons-logging</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.tiles</groupId>
+			<artifactId>tiles-jsp</artifactId>
+			<version>${org.apache.tiles-version}</version>
+		</dependency>
+
+
+		<dependency>
+			<groupId>commons-fileupload</groupId>
+			<artifactId>commons-fileupload</artifactId>
+			<version>${commons-fileupload.commons-fileupload-version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>servlet-api</artifactId>
+			<version>${javax.servlet.servlet-api-version}</version>
+			<scope>provided</scope>
+		</dependency>
+
+	</dependencies>
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<source>${java-version}</source>
+					<target>${java-version}</target>
+				</configuration>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-dependency-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>install</id>
+						<phase>install</phase>
+						<goals>
+							<goal>sources</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-resources-plugin</artifactId>
+				<version>${org.apache.maven.plugins.maven-resources-plugin-version}</version>
+				<configuration>
+					<encoding>UTF-8</encoding>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+</project>

@@ -1,0 +1,115 @@
+<div class="header" xmlns:jsp="http://java.sun.com/JSP/Page"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:spring="http://www.springframework.org/tags" 
+	xmlns:sec="http://www.springframework.org/security/tags" 
+	version="2.0">
+	<jsp:directive.page contentType="text/html;charset=UTF-8" />
+	<jsp:output omit-xml-declaration="yes" />
+	
+	<spring:message code="label_contactos_nombre" var="labelContactosNombre" />
+	<spring:message code="label_contactos_salario" var="labelContactosSalario" />
+	
+	<spring:message code="header_text" var="headerText"/>
+    <spring:message code="label_logout" var="labelLogout"/>
+    <spring:message code="label_welcome" var="labelWelcome"/>
+    <spring:url var="logoutUrl" value="/logout" />    	
+
+	<script>
+	    $(function() {
+	        $("#button-text" ).button().next().button({
+	        	text: false,icons: {primary: "ui-icon-triangle-1-s"}
+            });
+	        
+            $("#select" ).click(function() {
+               var menu = $( this ).parent().next().show().position({
+                   my: "left top",
+                   at: "left bottom",
+                   of: this
+               });
+               $(document).one( "click", function() {
+                   menu.hide(); 
+               });
+               return false;
+           });
+            
+           $("#select" ).parent().buttonset().next().hide().menu();
+           
+           $("#closelink").bind("click",function(event){
+        		event.stopPropagation(); 
+        		$(this).parent().remove();
+        	});
+
+ 	      $('ul.sf-menu').sooperfish();
+ 	      
+ 	     seleccionarMenu();
+	    });
+	    </script>
+    
+
+    	
+    	<div id="appname" class="menu_header">
+		<ul class="sf-menu" id="nav">
+				<li>
+					<a href="#" id="menuGarantias" >Contacto</a>
+					<ul>
+							<li>
+								<a href="${pageContext.request.contextPath}/contacto" id="alta" >${labelContactosNombre}</a>
+							</li>
+							<li>
+								<a href="${pageContext.request.contextPath}/contacto" id="altaMasiva" >${labelContactosSalario}</a>
+							</li>
+					</ul>
+				</li>
+				<li>
+					<a href="#" id="menu_option_2" >Ficheros</a>
+					<ul>	
+						<li>
+							<a href="${pageContext.request.contextPath}/listados/consultaListados"		id="ConsultaListados" >Consulta Listados</a>
+						</li>
+					</ul>
+				</li>
+				<li>
+					<a href="#" id="menu_option_5" >Administración</a>
+					<ul>
+							<li>
+								<a href="${pageContext.request.contextPath}/administracion/logErrores" id="Consulta" >Log Errores</a>
+							</li>
+					</ul>
+				</li>
+	    </ul>
+	 </div>
+     <div class="sub_header"> 	
+   		<img src="${pageContext.request.contextPath}/img/logo_ico_small.png" class="header_logo" />
+       	<span class="header_title">${headerText}</span>
+       	
+        <div id="userinfo" >
+	        <sec:authorize access="isAuthenticated()"> 
+	        	<div style="z-index: 0;">
+				    <div>
+				        <button id="button-text"><img src="${pageContext.request.contextPath}/img/cog.png"  class="icon icon-settings"/><sec:authentication property="principal.username" /></button>
+				        <button id="select">Opciones</button>
+				    </div>
+				    <ul class="logout-list">
+				        <li>
+				        	<a href="${logoutUrl}" id="closelink">
+				        		<img src="${pageContext.request.contextPath}/img/locked.png"  class="icon icon-settings"/>
+		            			${labelLogout}
+		            		</a>
+						</li>
+				    </ul>
+				</div>
+	        </sec:authorize>                       
+   		</div>	
+   		<div id="userinfo">
+			<table>
+				<tr>
+					<td>
+					<sec:authorize access="hasAnyRole('ICOMediacion','ICOConsulta','Administrador')">
+						<a href="${urlSwift}" target="blank" id="accesoSwift"> Acceso a SWIFT </a>
+					</sec:authorize>
+					</td>
+				</tr>
+			</table>
+		</div>
+     </div>
+</div>
