@@ -1,7 +1,6 @@
 package es.arq.arquitectura.util;
 
 public class Constantes {
-
 	/**
 	 * Modo de acceso a la aplicación.
 	 */
