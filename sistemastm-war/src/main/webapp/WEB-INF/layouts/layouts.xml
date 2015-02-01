@@ -16,8 +16,8 @@
 		<put-attribute name="body" value="/WEB-INF/views/errorMessage.jspx" />
 	</definition>
 	
-	<definition name="login" template="/WEB-INF/views/login.jspx" />
+<!-- 	<definition name="login" template="/WEB-INF/views/login.jspx" /> -->
 	
-	<definition name="password" template="/WEB-INF/views/password.jspx" />
+<!-- 	<definition name="password" template="/WEB-INF/views/password.jspx" /> -->
 	
 </tiles-definitions>

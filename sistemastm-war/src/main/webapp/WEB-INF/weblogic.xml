@@ -9,10 +9,10 @@
 
 	<context-root>sistemastm</context-root>
 
-	<resource-description>
-		<res-ref-name>es.tm.dataSource.dsSistemastm</res-ref-name>
-		<jndi-name>es.tm.dataSource.dsSistemastm</jndi-name>
-	</resource-description>
+<!-- 	<resource-description> -->
+<!-- 		<res-ref-name>es.tm.dataSource.dsSistemastm</res-ref-name> -->
+<!-- 		<jndi-name>es.tm.dataSource.dsSistemastm</jndi-name> -->
+<!-- 	</resource-description> -->
 
 
 	<container-descriptor>
