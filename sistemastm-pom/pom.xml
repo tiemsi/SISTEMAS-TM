@@ -23,7 +23,7 @@
 		<junit.junit-version>4.10</junit.junit-version>
 		<log4j.log4j-version>1.2.15</log4j.log4j-version>
 		<com.google.guava-version>11.0</com.google.guava-version>
-		<es.arq.arquitectura-jar-version>0.0.1-SNAPSHOT</es.arq.arquitectura-jar-version>
+		<es.arq.arquitectura-jar-version>1.0</es.arq.arquitectura-jar-version>
 		<javax.servlet.servlet-api-version>2.5</javax.servlet.servlet-api-version>
 		<javax.servlet.jsp.jsp-api-version>2.1</javax.servlet.jsp.jsp-api-version>
 		<javax.servlet.jstl-version>1.2</javax.servlet.jstl-version>
@@ -42,6 +42,23 @@
 
 
 	<dependencies>
+		<!-- Spring- -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-beans</artifactId>
+			<version>3.2.3.RELEASE</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-core</artifactId>
+			<version>3.2.3.RELEASE</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-web</artifactId>
+			<version>3.2.3.RELEASE</version>
+		</dependency>
+
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-context-support</artifactId>
@@ -93,6 +110,7 @@
 				</exclusion>
 			</exclusions>
 		</dependency>
+
 	</dependencies>
 
 </project>

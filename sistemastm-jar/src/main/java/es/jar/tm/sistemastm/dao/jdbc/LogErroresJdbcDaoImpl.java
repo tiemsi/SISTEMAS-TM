@@ -7,11 +7,6 @@ import java.util.Map;
 import javax.annotation.Resource;
 import javax.sql.DataSource;
 
-import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.jdbc.core.SqlParameter;
-import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
-import org.springframework.jdbc.core.namedparam.SqlParameterSource;
-import org.springframework.jdbc.core.simple.SimpleJdbcCall;
 import org.springframework.stereotype.Repository;
 
 import es.jar.tm.sistemastm.dao.LogErroresJdbcDao;
@@ -20,8 +15,8 @@ import es.jar.tm.sistemastm.dao.LogErroresJdbcDao;
 public class LogErroresJdbcDaoImpl implements LogErroresJdbcDao {
 	
 	private DataSource dataSource;
-	private JdbcTemplate jdbcTemplate;
-    private SimpleJdbcCall jdbcCall;
+//	private JdbcTemplate jdbcTemplate;
+//    private SimpleJdbcCall jdbcCall;
 	
 	@Resource(name = "dataSource")
 	public void setDataSource(DataSource dataSource) {
@@ -34,25 +29,27 @@ public class LogErroresJdbcDaoImpl implements LogErroresJdbcDao {
 		
 	//FUNCIONA OK
 	public Map<String, Object> executeProcedure(String procedureName, BigDecimal id) {
-		this.jdbcCall = new SimpleJdbcCall(dataSource).withProcedureName(procedureName);
-        SqlParameterSource in = new MapSqlParameterSource().addValue("p_id", id);
-        return jdbcCall.execute(in);
+//		this.jdbcCall = new SimpleJdbcCall(dataSource).withProcedureName(procedureName);
+//        SqlParameterSource in = new MapSqlParameterSource().addValue("p_id", id);
+//        return jdbcCall.execute(in);
+		return null;
     }
 	
 	//NO FUNCIONA :(
 	public List<Object> executeListQuery(String schemaName, String procedureName, Map<String, Object> params) throws Exception{
-		jdbcTemplate = new JdbcTemplate(dataSource);
-		jdbcCall = new SimpleJdbcCall(jdbcTemplate);
-		jdbcCall.withSchemaName(schemaName);
-		jdbcCall.withProcedureName(procedureName);
+//		jdbcTemplate = new JdbcTemplate(dataSource);
+//		jdbcCall = new SimpleJdbcCall(jdbcTemplate);
+//		jdbcCall.withSchemaName(schemaName);
+//		jdbcCall.withProcedureName(procedureName);
 		
-		if (params != null){
-			for (Map.Entry<String, Object> param : params.entrySet()){
-				jdbcCall.addDeclaredParameter(new SqlParameter(param.getKey(), getOracleTypes(param.getValue())));
-			}
-		}
-		
-		return (List<Object>) jdbcCall.execute(params).values();
+//		if (params != null){
+//			for (Map.Entry<String, Object> param : params.entrySet()){
+//				jdbcCall.addDeclaredParameter(new SqlParameter(param.getKey(), getOracleTypes(param.getValue())));
+//			}
+//		}
+//		
+//		return (List<Object>) jdbcCall.execute(params).values();
+		return null;
 	}
 	
 	private int getOracleTypes(Object param){
