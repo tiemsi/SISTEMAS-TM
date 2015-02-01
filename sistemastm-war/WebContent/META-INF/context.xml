@@ -1,7 +1,4 @@
-<?xml version='1.0' encoding='utf-8'?>
+<?xml version="1.0" encoding="UTF-8"?>
 <Context reloadable="true">
-
-	<ResourceLink name="es.ico.dataSource.dsPrototipo1" global="es.ico.dataSource.dsPrototipo1" type="javax.sql.DataSource"/>
-	<ResourceLink name="es.ico.dataSource.dsNucleo" global="es.ico.dataSource.dsNucleo" type="javax.sql.DataSource"/>
 
 </Context>
