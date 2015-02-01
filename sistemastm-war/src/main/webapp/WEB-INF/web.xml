@@ -4,8 +4,7 @@
 	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
 	id="WebApp_ID" version="2.5">
 	
-	<!-- The definition of the Root Spring Container shared by all Servlets 
-		and Filters -->
+	<!-- The definition of the Root Spring Container shared by all Servlets and Filters -->
 	<context-param>
 		<param-name>contextConfigLocation</param-name>
 		<param-value>/WEB-INF/spring/root-context.xml</param-value>
@@ -97,13 +96,4 @@
 		<location>/WEB-INF/views/error.jsp</location>
 	</error-page>
 	
-		<!-- WEBLOGIC -->
-<!-- 	<resource-ref> -->
-<!-- 	    <description>SistemasTM</description> -->
-<!-- 	    <res-ref-name>es.tm.dataSource.dsSistemastm</res-ref-name> -->
-<!-- 	    <res-type>javax.sql.DataSource</res-type> -->
-<!-- 	    <res-auth>Container</res-auth> -->
-<!-- 	    <mapped-name>es.tm.dataSource.dsSistemastm</mapped-name> -->
-<!-- 	</resource-ref> -->
-
 </web-app>
