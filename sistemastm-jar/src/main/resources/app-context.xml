@@ -29,12 +29,23 @@
  
 
 	<bean id="serviceInterceptorAspect" class="es.jar.tm.sistemastm.aspects.ServiceInterceptorAspect" />
+	
+	<!-- 
 	<bean id="dataSourceJDBC"  class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<property name="driverClassName" value="oracle.jdbc.driver.OracleDriver"/>
-		<property name="url" value="jdbc:oracle:thin:@integra2.ico.red:1521:integra1.ico.red"/>
-		<property name="username" value="prototipo"/>
-		<property name="password" value="prototipo"/>
+		<property name="url" value="jdbc:oracle:thin:@localhost:1521:sistemastm"/>
+		<property name="username" value="root"/>
+		<property name="password" value="root"/>
 	</bean>
+	 -->
+	
+    <bean id="dataSourceJDBC" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+        <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
+        <property name="url" value="jdbc:mysql://localhost:3306/sistemastm"/>
+        <property name="username" value="root"/>
+        <property name="password" value="root"/>
+    </bean>
+
 			
 	<bean id="placeholderConfig" class="es.ico.arquitectura.util.PropertiesUtil">
 	    <property name="systemPropertiesModeName" value="SYSTEM_PROPERTIES_MODE_OVERRIDE"/>
