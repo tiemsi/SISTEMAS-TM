@@ -85,7 +85,7 @@ public class LogErroresController {
 		PageRequest pageRequest = new PageRequest(page - 1, rows);
 
 		LogErroresGrid logErroresGrid = new LogErroresGrid();
-		Page<LogErrores> logErrores;
+//		Page<LogErrores> logErrores;
 		
 //		if (id == null || id.toString().equals(ComunAttributeEnum.UNDEFINED.toString())){ 
 //			logErrores = logErroresService.findByIdPageable(null, pageRequest);
