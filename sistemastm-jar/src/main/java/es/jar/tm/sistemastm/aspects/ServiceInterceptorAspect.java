@@ -55,7 +55,7 @@ public class ServiceInterceptorAspect {
 	 * Método que realiza el LOG de un método que se va a ejecutar.
 	 * 
 	 * Ejemplo de traza:
-	 * method-execution: es.ico.sistemastm.service.ContactoServiceImpl.findByNombrePageable
+	 * method-execution: es.jar.tm.sistemastm.service.ContactoServiceImpl.findByNombrePageable
 	 * 
 	 * @param jp
 	 */
@@ -140,18 +140,18 @@ public class ServiceInterceptorAspect {
 //		/*##############- EJEMPLOS de info que se puede obtener de joinpoint sin error -##############*/
 //		/*
 //		jp.getSourceLocation()											;//org.springframework.aop.aspectj.MethodInvocationProceedingJoinPoint$SourceLocationImpl@1c44cc1
-//		jp.getSourceLocation()	.getWithinType()	.getCanonicalName()	;//es.ico.sistemastm.service.LogErroresServiceImpl
-//		jp.getSignature()												;//BigDecimal es.ico.sistemastm.service.LogErroresService.setAndSave(String,String,String,String)
-//		jp.getSignature()		.getDeclaringType()	.getCanonicalName()	;//es.ico.sistemastm.service.LogErroresService
+//		jp.getSourceLocation()	.getWithinType()	.getCanonicalName()	;//es.jar.tm.sistemastm.service.LogErroresServiceImpl
+//		jp.getSignature()												;//BigDecimal es.jar.tm.sistemastm.service.LogErroresService.setAndSave(String,String,String,String)
+//		jp.getSignature()		.getDeclaringType()	.getCanonicalName()	;//es.jar.tm.sistemastm.service.LogErroresService
 //		jp.getSignature()		.getName()								;//setAndSave
-//		jp.getSignature()		.toLongString()							;//public abstract java.math.BigDecimal es.ico.sistemastm.service.LogErroresService.setAndSave(java.lang.String,java.lang.String,java.lang.String,java.lang.String)
+//		jp.getSignature()		.toLongString()							;//public abstract java.math.BigDecimal es.jar.tm.sistemastm.service.LogErroresService.setAndSave(java.lang.String,java.lang.String,java.lang.String,java.lang.String)
 //		jp.getSignature()		.toShortString()						;//LogErroresService.setAndSave(..)
-//		jp.getStaticPart()												;//execution(BigDecimal es.ico.sistemastm.service.LogErroresService.setAndSave(String,String,String,String))
+//		jp.getStaticPart()												;//execution(BigDecimal es.jar.tm.sistemastm.service.LogErroresService.setAndSave(String,String,String,String))
 //		jp.getStaticPart()		.getId()								;//0
 //		jp.getStaticPart()		.getKind()								;//method-execution
-//		jp.getStaticPart()		.toLongString()							;//execution(public abstract java.math.BigDecimal es.ico.sistemastm.service.LogErroresService.setAndSave(java.lang.String,java.lang.String,java.lang.String,java.lang.String))
+//		jp.getStaticPart()		.toLongString()							;//execution(public abstract java.math.BigDecimal es.jar.tm.sistemastm.service.LogErroresService.setAndSave(java.lang.String,java.lang.String,java.lang.String,java.lang.String))
 //		jp.getStaticPart()		.toShortString()						;//execution(LogErroresService.setAndSave(..))
-//		jp.toLongString()												;//execution(public abstract java.math.BigDecimal es.ico.sistemastm.service.LogErroresService.setAndSave(java.lang.String,java.lang.String,java.lang.String,java.lang.String))
+//		jp.toLongString()												;//execution(public abstract java.math.BigDecimal es.jar.tm.sistemastm.service.LogErroresService.setAndSave(java.lang.String,java.lang.String,java.lang.String,java.lang.String))
 //		jp.toShortString()												;//execution(LogErroresService.setAndSave(..))
 //		*/
 //		

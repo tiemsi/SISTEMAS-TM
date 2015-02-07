@@ -27,18 +27,16 @@
     <!-- la configuración de las caches haciendo uso del fichero de propiedades típico de ehcache -->     
     <bean id="ehcache" class="org.springframework.cache.ehcache.EhCacheManagerFactoryBean" p:config-location="classpath:ehcache.xml"/>
  
-
 	<bean id="serviceInterceptorAspect" class="es.jar.tm.sistemastm.aspects.ServiceInterceptorAspect" />
 	
-    <bean id="dataSourceJDBC" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
-        <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
-        <property name="url" value="jdbc:mysql://localhost:3306/sistemastm"/>
-        <property name="username" value="root"/>
-        <property name="password" value="root"/>
-    </bean>
-
+<!--     <bean id="dataSourceJDBC" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close"> -->
+<!--         <property name="driverClassName" value="com.mysql.jdbc.Driver"/> -->
+<!--         <property name="url" value="jdbc:mysql://localhost:3306/sistemastm"/> -->
+<!--         <property name="username" value="root"/> -->
+<!--         <property name="password" value="root"/> -->
+<!--     </bean> -->
 			
-	<bean id="placeholderConfig" class="es.ico.arquitectura.util.PropertiesUtil">
+	<bean id="placeholderConfig" class="es.arq.arquitectura.util.PropertiesUtil">
 	    <property name="systemPropertiesModeName" value="SYSTEM_PROPERTIES_MODE_OVERRIDE"/>
 	    <property name="locations">
 		    <list>
@@ -51,21 +49,3 @@
 
 	<context:component-scan base-package="es.jar.tm.sistemastm" />
 </beans>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

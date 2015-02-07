@@ -16,7 +16,7 @@ http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
 	</property>
 </bean>
  
-<bean id="sendMail" class="es.ico.prototipo.mail.SendMail">
+<bean id="sendMail" class="es.jar.tm.sistemastm.mail.SendMail">
 	<property name="mailSender" ref="mailSender" />
 </bean>
  
